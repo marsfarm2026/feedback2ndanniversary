@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2nd Anniversary Mars Farm Coffee Shop — Feedback</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            espresso: {
+              900: '#1c120e',
+              800: '#2d1e17',
+              700: '#432d22',
+              600: '#5d3f30',
+            },
+            latte: {
+              100: '#fdf8f3',
+              200: '#f5eadc',
+              300: '#e6d2b8',
+            },
+            amberwarm: '#d97706',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-espresso-900 via-espresso-800 to-espresso-700 text-espresso-900 flex items-center justify-center p-4">
+
+  <div class="w-full max-w-xl bg-latte-100 rounded-3xl shadow-2xl border border-latte-300 overflow-hidden">
+    <!-- Top Banner -->
+    <div class="bg-espresso-900 text-latte-100 px-6 py-6 text-center">
+      <span class="inline-block text-xs font-semibold tracking-widest uppercase bg-amberwarm/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full mb-2">
+        2nd Anniversary Celebration
+      </span>
+      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+        Mars Farm Coffee Shop
+      </h1>
+      <p class="text-sm text-latte-200/80 mt-1">
+        Cerita &amp; feedback keseruan acara hari pertama ☕✨
+      </p>
+    </div>
+
+    <div class="p-6 sm:p-8">
+
+      <!-- STEP 1: HALAMAN DEPAN (INPUT NAMA) -->
+      <section id="step-welcome" class="space-y-6">
+        <div class="text-center space-y-2">
+          <h2 class="text-xl font-bold text-espresso-900">
+            Selamat Datang di Perayaan 2 Tahun! 🎉
+          </h2>
+          <p class="text-sm text-espresso-700 leading-relaxed">
+            Masukkan nama kamu terlebih dahulu untuk langsung masuk ke halaman pertanyaan feedback.
+          </p>
+        </div>
+
+        <form id="name-form" class="space-y-4">
+          <div>
+            <label for="participant-name" class="block text-sm font-semibold text-espresso-800 mb-1.5">
+              Nama Kamu <span class="text-red-600">*</span>
+            </label>
+            <input
+              type="text"
+              id="participant-name"
+              name="nama"
+              required
+              placeholder="Ketik nama kamu di sini..."
+              class="w-full px-4 py-3 rounded-xl bg-white border border-latte-300 text-espresso-900 placeholder-espresso-700/40 focus:outline-none focus:ring-2 focus:ring-amberwarm focus:border-amberwarm transition"
+            />
+            <p id="name-error" class="hidden text-xs text-red-600 mt-1.5">
+              Silakan isi nama kamu terlebih dahulu ya.
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-3.5 px-6 rounded-xl bg-espresso-900 hover:bg-espresso-800 active:scale-[0.99] text-latte-100 font-semibold shadow-lg transition cursor-pointer flex items-center justify-center gap-2"
+          >
+            <span>Lanjut ke Pertanyaan</span>
+            <span>→</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- STEP 2: HALAMAN UTAMA (PERTANYAAN FEEDBACK) -->
+      <section id="step-questions" class="hidden space-y-6">
+        <!-- Greeting Bar -->
+        <div class="flex items-center justify-between bg-latte-200/80 border border-latte-300 rounded-2xl px-4 py-3">
+          <div class="text-sm">
+            <span class="text-espresso-700">Halo,</span>
+            <strong id="display-name" class="text-espresso-900 font-bold"></strong> 👋
+          </div>
+          <button
+            type="button"
+            id="btn-change-name"
+            class="text-xs font-semibold text-amberwarm hover:underline cursor-pointer"
+          >
+            Ganti Nama
+          </button>
+        </div>
+
+        <form id="feedback-form" class="space-y-6">
+          <!-- 1. Hal paling membuat kagum (Essay) -->
+          <div>
+            <label for="hal-kagum" class="block text-sm font-bold text-espresso-900 mb-1.5">
+              1. Ketika kamu datang, hal apa yang paling membuat kamu kagum?
+            </label>
+            <textarea
+              id="hal-kagum"
+              name="halKagum"
+              rows="3"
+              placeholder="Ceritakan hal pertama yang bikin kamu takjub saat tiba..."
+              class="w-full px-4 py-3 rounded-xl bg-white border border-latte-300 text-espresso-900 placeholder-espresso-700/40 focus:outline-none focus:ring-2 focus:ring-amberwarm focus:border-amberwarm transition"
+            ></textarea>
+          </div>
+
+          <!-- 2. Kenyamanan tenda (1 - 5) -->
+          <div>
+            <label class="block text-sm font-bold text-espresso-900 mb-2">
+              2. Bagaimana kenyamanan tenda yg telah disiapkan? (Rentang 1 - 5) <span class="text-red-600">*</span>
+            </label>
+            <div class="grid grid-cols-5 gap-2">
+              <label class="cursor-pointer">
+                <input type="radio" name="kenyamananTenda" value="1" class="sr-only peer" required />
+                <div class="py-3 rounded-xl border border-latte-300 bg-white text-center font-bold text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  1
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="kenyamananTenda" value="2" class="sr-only peer" />
+                <div class="py-3 rounded-xl border border-latte-300 bg-white text-center font-bold text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  2
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="kenyamananTenda" value="3" class="sr-only peer" />
+                <div class="py-3 rounded-xl border border-latte-300 bg-white text-center font-bold text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  3
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="kenyamananTenda" value="4" class="sr-only peer" />
+                <div class="py-3 rounded-xl border border-latte-300 bg-white text-center font-bold text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  4
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="kenyamananTenda" value="5" class="sr-only peer" />
+                <div class="py-3 rounded-xl border border-latte-300 bg-white text-center font-bold text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  5
+                </div>
+              </label>
+            </div>
+            <div class="flex justify-between text-xs text-espresso-700/80 mt-1.5 px-0.5">
+              <span>1 = Kurang nyaman</span>
+              <span>5 = Sangat nyaman</span>
+            </div>
+          </div>
+
+          <!-- 3. The secret games (1 - 5) -->
+          <div>
+            <label class="block text-sm font-bold text-espresso-900 mb-2">
+              3. Bagaimana the secret games hari ini? (Rentang 1 - 5) <span class="text-red-600">*</span>
+            </label>
+            <div class="grid grid-cols-5 gap-2">
+              <label class="cursor-pointer">
+                <input type="radio" name="secretGames" value="1" class="sr-only peer" required />
+                <div class="py-3 rounded-xl border border-latte-300 bg-white text-center font-bold text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  1
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="secretGames" value="2" class="sr-only peer" />
+                <div class="py-3 rounded-xl border border-latte-300 bg-white text-center font-bold text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  2
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="secretGames" value="3" class="sr-only peer" />
+                <div class="py-3 rounded-xl border border-latte-300 bg-white text-center font-bold text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  3
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="secretGames" value="4" class="sr-only peer" />
+                <div class="py-3 rounded-xl border border-latte-300 bg-white text-center font-bold text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  4
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="secretGames" value="5" class="sr-only peer" />
+                <div class="py-3 rounded-xl border border-latte-300 bg-white text-center font-bold text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  5
+                </div>
+              </label>
+            </div>
+            <div class="flex justify-between text-xs text-espresso-700/80 mt-1.5 px-0.5">
+              <span>1 = Biasa saja</span>
+              <span>5 = Seru banget</span>
+            </div>
+          </div>
+
+          <!-- 4. Pos paling disukai (POS 1, POS 2, POS 3) -->
+          <div>
+            <label class="block text-sm font-bold text-espresso-900 mb-2">
+              4. Pos mana yang paling kamu suka? <span class="text-red-600">*</span>
+            </label>
+            <div class="grid grid-cols-3 gap-2.5">
+              <label class="cursor-pointer">
+                <input type="radio" name="posFavorit" value="POS 1" class="sr-only peer" required />
+                <div class="py-3 px-4 rounded-xl border border-latte-300 bg-white text-center font-bold text-sm text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  POS 1
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="posFavorit" value="POS 2" class="sr-only peer" />
+                <div class="py-3 px-4 rounded-xl border border-latte-300 bg-white text-center font-bold text-sm text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  POS 2
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="posFavorit" value="POS 3" class="sr-only peer" />
+                <div class="py-3 px-4 rounded-xl border border-latte-300 bg-white text-center font-bold text-sm text-espresso-800 peer-checked:bg-amberwarm peer-checked:text-white peer-checked:border-amberwarm transition">
+                  POS 3
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 5. Panitia favorit (Essay) -->
+          <div>
+            <label for="panitia-favorit" class="block text-sm font-bold text-espresso-900 mb-1.5">
+              5. Siapa, panitia favorit kamu?
+            </label>
+            <textarea
+              id="panitia-favorit"
+              name="panitiaFavorit"
+              rows="2"
+              placeholder="Sebutkan nama/ciri panitia favorit kamu dan alasannya..."
+              class="w-full px-4 py-3 rounded-xl bg-white border border-latte-300 text-espresso-900 placeholder-espresso-700/40 focus:outline-none focus:ring-2 focus:ring-amberwarm focus:border-amberwarm transition"
+            ></textarea>
+          </div>
+
+          <!-- 6. Hal kurang nyaman / tidak disuka -->
+          <div>
+            <label for="hal-kurang-nyaman" class="block text-sm font-bold text-espresso-900 mb-1.5">
+              6. Hal apa yang paling kurang/ tidak nyaman/ tidak suka di acara hari pertama ini?
+            </label>
+            <textarea
+              id="hal-kurang-nyaman"
+              name="halKurangNyaman"
+              rows="3"
+              placeholder="Tuliskan masukan jujur kamu untuk evaluasi kami..."
+              class="w-full px-4 py-3 rounded-xl bg-white border border-latte-300 text-espresso-900 placeholder-espresso-700/40 focus:outline-none focus:ring-2 focus:ring-amberwarm focus:border-amberwarm transition"
+            ></textarea>
+          </div>
+
+          <!-- 7. Hal paling berkesan di acara hari pertama -->
+          <div>
+            <label for="hal-berkesan" class="block text-sm font-bold text-espresso-900 mb-1.5">
+              7. Hal apa yang paling berkesann dalam acara hari pertama ini?
+            </label>
+            <textarea
+              id="hal-berkesan"
+              name="halBerkesan"
+              rows="3"
+              placeholder="Momen paling membekas di hari pertama..."
+              class="w-full px-4 py-3 rounded-xl bg-white border border-latte-300 text-espresso-900 placeholder-espresso-700/40 focus:outline-none focus:ring-2 focus:ring-amberwarm focus:border-amberwarm transition"
+            ></textarea>
+          </div>
+
+          <!-- 8. Harapan untuk acara selanjutnya -->
+          <div>
+            <label for="harapan-selanjutnya" class="block text-sm font-bold text-espresso-900 mb-1.5">
+              8. Harapan untuk acara - acara selanjutnya seperti apa?
+            </label>
+            <textarea
+              id="harapan-selanjutnya"
+              name="harapanSelanjutnya"
+              rows="3"
+              placeholder="Harapan atau ide kamu untuk acara-acara berikutnya..."
+              class="w-full px-4 py-3 rounded-xl bg-white border border-latte-300 text-espresso-900 placeholder-espresso-700/40 focus:outline-none focus:ring-2 focus:ring-amberwarm focus:border-amberwarm transition"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            id="btn-submit"
+            class="w-full py-3.5 px-6 rounded-xl bg-amberwarm hover:bg-amber-600 active:scale-[0.99] text-white font-bold shadow-lg transition cursor-pointer flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            <span id="btn-submit-text">Kirim Feedback</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- STEP 3: HALAMAN KONFIRMASI -->
+      <section id="step-success" class="hidden text-center py-6 space-y-5">
+        <div class="w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-3xl font-bold">
+          ✓
+        </div>
+        <div class="space-y-2">
+          <h2 class="text-2xl font-extrabold text-espresso-900">
+            Terima Kasih, <span id="success-name"></span>! 🙌
+          </h2>
+          <p class="text-sm text-espresso-700 leading-relaxed">
+            Feedback kamu sudah berhasil terkirim ke <strong>Mars Farm Coffee Shop</strong>. Tunjukkan layar ini ke tim/panitia untuk klaim hadiah/kesempatan main game-mu ya! ☕✨
+          </p>
+        </div>
+        <button
+          type="button"
+          id="btn-reset"
+          class="inline-flex items-center justify-center py-3 px-6 rounded-xl bg-espresso-900 hover:bg-espresso-800 text-latte-100 text-sm font-semibold transition cursor-pointer"
+        >
+          Isi untuk Peserta Berikutnya
+        </button>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwR0woA5iaP_cXJN8Z0x7Bg8J9Fho3UqBtLRpJG6hh14B4eY_FK7CLptD2W0QG-Pz-6/exec";
+
+    const stepWelcome = document.getElementById("step-welcome");
+    const stepQuestions = document.getElementById("step-questions");
+    const stepSuccess = document.getElementById("step-success");
+
+    const nameForm = document.getElementById("name-form");
+    const participantNameInput = document.getElementById("participant-name");
+    const nameError = document.getElementById("name-error");
+    const displayName = document.getElementById("display-name");
+    const btnChangeName = document.getElementById("btn-change-name");
+
+    const feedbackForm = document.getElementById("feedback-form");
+    const btnSubmit = document.getElementById("btn-submit");
+    const btnSubmitText = document.getElementById("btn-submit-text");
+    const successName = document.getElementById("success-name");
+    const btnReset = document.getElementById("btn-reset");
+
+    let currentParticipantName = "";
+
+    nameForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const nameVal = participantNameInput.value.trim();
+      if (!nameVal) {
+        nameError.classList.remove("hidden");
+        participantNameInput.focus();
+        return;
+      }
+      nameError.classList.add("hidden");
+      currentParticipantName = nameVal;
+      displayName.textContent = currentParticipantName;
+
+      stepWelcome.classList.add("hidden");
+      stepQuestions.classList.remove("hidden");
+      stepSuccess.classList.add("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    btnChangeName.addEventListener("click", () => {
+      stepQuestions.classList.add("hidden");
+      stepWelcome.classList.remove("hidden");
+      participantNameInput.focus();
+    });
+
+    feedbackForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(feedbackForm);
+      const payload = {
+        nama: currentParticipantName,
+        halKagum: (formData.get("halKagum") || "").trim(),
+        kenyamananTenda: formData.get("kenyamananTenda") || "",
+        secretGames: formData.get("secretGames") || "",
+        posFavorit: formData.get("posFavorit") || "",
+        panitiaFavorit: (formData.get("panitiaFavorit") || "").trim(),
+        halKurangNyaman: (formData.get("halKurangNyaman") || "").trim(),
+        halBerkesan: (formData.get("halBerkesan") || "").trim(),
+        harapanSelanjutnya: (formData.get("harapanSelanjutnya") || "").trim()
+      };
+
+      btnSubmit.disabled = true;
+      btnSubmitText.textContent = "Mengirim...";
+
+      try {
+        await fetch(WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        successName.textContent = currentParticipantName;
+        stepQuestions.classList.add("hidden");
+        stepSuccess.classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (err) {
+        alert("Terjadi kendala koneksi saat mengirim feedback. Silakan coba lagi.");
+      } finally {
+        btnSubmit.disabled = false;
+        btnSubmitText.textContent = "Kirim Feedback";
+      }
+    });
+
+    btnReset.addEventListener("click", () => {
+      feedbackForm.reset();
+      nameForm.reset();
+      currentParticipantName = "";
+      stepSuccess.classList.add("hidden");
+      stepQuestions.classList.add("hidden");
+      stepWelcome.classList.remove("hidden");
+      participantNameInput.focus();
+    });
+  </script>
+</body>
+</html>
